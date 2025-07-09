@@ -31,3 +31,22 @@ para escribir funciones asíncronas que usan Redux
   *Action<string>
 *>;
 */
+import { configureStore } from "@reduxjs/toolkit";
+import type { Action, ThunkAction } from "@reduxjs/toolkit";
+import company from "../features/company/companySlice";
+
+export const store = configureStore({
+  reducer: {
+    company,
+  },
+});
+
+// NOTE: Tipos de RootState y AppDispatch
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>;

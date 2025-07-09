@@ -1,4 +1,5 @@
 import React from 'react';
+import CompanyData from '../components/CompanyComponents/CompanyData/CompanyData';
 
 function App() {
   return (
@@ -6,6 +7,7 @@ function App() {
       <div className="bg-white p-6 rounded shadow-md text-center">
         <h1 className="text-2xl font-bold mb-4">¡Hola Mundo!</h1>
         <p className="text-gray-700">Este es un componente básico con Tailwind CSS</p>
+        < CompanyData />
       </div>
     </div>
   );
