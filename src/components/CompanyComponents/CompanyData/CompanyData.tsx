@@ -2,6 +2,8 @@ import React from 'react';
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../../hooks/reduxCustomHooks";
 import { getAllCompanys } from "../../../features/company/companySlice";
+import DataTable from '../../DataTables/DataTable';
+import { COMPANY_HEADER } from '../../../utils/constants/headers';
 
 
 const CompanyData = () => {
@@ -13,26 +15,28 @@ const CompanyData = () => {
 
     const dispatch = useAppDispatch();
 
-    useEffect(() => {
+  //traemos todas las compañias
+  useEffect(() => {
     dispatch(getAllCompanys());
   }, [dispatch, companies.length]);
 
-  console.log("Companies:", companies);
-  console.log("Filtered Companies:", filteredCompanies);
+  const headerTitles = COMPANY_HEADER.map((header) => header.header); //traemos el array con la cabecera de la tabla compañia
 
   return (
-    <div>
-      <h2>Company Data</h2>
-      {isLoading && <p>Loading...</p>}
-      {!isLoading && companies.length === 0 && <p>No companies found.</p>}
-      <ul>
-        {companies.map((company) => (
-          <li key={company.id}>
-            {company.nombre} - {company.direccion} - {company.telefono}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <section className="space-y-8 rounded bg-white p-4 shadow">
+      <h2 className="font-inter-bold text-xl">Información de direcciones</h2>
+      <small className="font-inter-semi-bold text-gray-1">
+        Estos son los datos encontrados.
+      </small>
+
+      <div className="max-h-[50vh] max-w-full overflow-auto">
+        <DataTable 
+          headers={headerTitles}
+          data={filteredCompanies}
+          dataType="company"
+        />
+      </div>
+    </section>
   );
 
 };

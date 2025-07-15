@@ -20,3 +20,20 @@ const routes = createBrowserRouter([
 ]);
 export default routes;
 */
+
+import { createBrowserRouter } from "react-router-dom";
+import Company from "../pages/Company/Company";
+
+const routes = createBrowserRouter([
+  {
+    path: "/",
+    element: <Company/>
+  },
+  {
+    path: "/compañia",
+    element: <Company/>
+  }
+]);
+
+export default routes;
+

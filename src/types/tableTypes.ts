@@ -7,7 +7,6 @@ export interface DataTableProps {
   data: Array<{ [key: string]: any }> | null;
   dataType?: string;
   buttons?: boolean;
-  selectedAlbaran?: boolean;
 }
 */
 //ejemplo de lo que recibe un a row:
@@ -22,3 +21,21 @@ export interface DataTableRowProps {
   isSelected: boolean;
 }
 */
+
+
+export interface DataTableProps {
+  headers: string[];
+  data: Array<{ [key: string]: any }> | null;
+  dataType?: string;
+  buttons?: boolean;
+}
+
+export interface DataTableRowProps {
+  rowData: Record<string, any>;
+  rowIndex: number;
+  onRowClick: (
+    event: React.MouseEvent<HTMLTableRowElement>,
+    rowIndex: number,
+  ) => void;
+  isSelected: boolean;
+}

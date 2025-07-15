@@ -1,16 +1,23 @@
 import React from 'react';
-import CompanyData from '../components/CompanyComponents/CompanyData/CompanyData';
+import Layout from '../layout/Layout';
+import routes from './routes';
+import { RouterProvider } from "react-router-dom";
 
-function App() {
+/*
+Aqui en App le enviamos a laytour el routes, esto es porque el routes es el que maneja las ventanas.
+Layout tiene como children el RouterProvider.
+El RouterProvider es el motor de React Router que decide qué pantalla (o ruta) renderizar.
+
+si en routes al pulsar en navbar le damos a company, routerprovider renderiza la ventana company 
+y lo muestra layout.
+*/
+
+const App = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-6 rounded shadow-md text-center">
-        <h1 className="text-2xl font-bold mb-4">¡Hola Mundo!</h1>
-        <p className="text-gray-700">Este es un componente básico con Tailwind CSS</p>
-        < CompanyData />
-      </div>
-    </div>
+    <Layout>
+      <RouterProvider router={routes} />
+    </Layout>
   );
-}
+};
 
 export default App;
